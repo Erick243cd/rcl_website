@@ -24,7 +24,8 @@ class Post extends Migration
             'postImage' => [
                 'type' => 'VARCHAR',
                 'constraint' => '250',
-            ], 'is_active' => [
+            ],
+            'is_active' => [
                 'type' => 'VARCHAR',
                 'constraint' => '250'
 
@@ -33,12 +34,28 @@ class Post extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '250',
             ],
+            'is_featured' => [
+                'type' => 'VARCHAR',
+                'constraint' => '250',
+            ],
             'description' => [
                 'type' => 'TEXT',
             ],
-
+            'category_id' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ],
+            'viewNumber' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ],
+            'is_most_format' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ]
         ]);
         $this->forge->addKey('postId', true);
+        $this->forge->addForeignKey('category_id', 'categories', 'categoryId');
         $this->forge->createTable('posts');
 
     }

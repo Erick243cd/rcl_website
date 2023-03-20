@@ -11,9 +11,10 @@ $routes = Services::routes();
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('Pages');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
+$routes->setAutoRoute(true);
 $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
@@ -29,9 +30,55 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('home', 'Pages::index');
-$routes->get('post-detail/(:any)', 'Posts::detail/$1');
+$routes->get('/', 'Pages::index');
+$routes->get('/home', 'Pages::index');
+$routes->get('/post-detail/(:any)', 'Posts::detail/$1');
+$routes->get('/posts-by-category/(:any)', 'Posts::postByCategory/$1');
+$routes->get('/podcasts', 'Podcasts::index');
+$routes->get('/news', 'Posts::news');
+$routes->get('/live-radio', 'Pages::liveRadio');
+$routes->get('/contact', 'Pages::contact');
+$routes->get('/grocery', 'Examples::customers_management');
+$routes->post('/search-post', 'Posts::search');
+
+$routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
+    //Protected routes
+    $routes->get('/dashboard', 'Dashboard::index');
+    $routes->get('/profile', 'Auth::profile');
+    $routes->get('/settings', 'Auth::settings');
+
+
+    $routes->get('list-users', 'Users::index');
+    $routes->get('/add-picture', 'Users::addImage');
+    $routes->get('/save-picture', 'Users::saveImage');
+    $routes->get('/add-user', 'Users::create');
+    $routes->post('/add-user', 'Users::create');
+    $routes->get('/add-member', 'Team::create');
+    $routes->get('/change-pwd', 'Auth::change');
+
+    $routes->get('add-post', 'Posts::create');
+    $routes->post('add-post', 'Posts::create');
+
+    $routes->get('post-edit/(:any)', 'Posts::edit/$1');
+    $routes->post('edit-post/(:any)', 'Posts::edit/$1');
+
+    $routes->get('delete-post/(:any)', 'Posts::delete/$1');
+    $routes->get('list-posts', 'Posts::index');
+    $routes->get('post-image/(:any)', 'Posts::addImage/$1');
+    $routes->post('post-image/(:any)', 'Posts::addImage/$1');
+    $routes->post('save-post-picture', 'Posts::saveImage');
+
+
+    $routes->get('coords', 'Coords::index');
+    $routes->get('coords-update', 'Coords::update');
+
+});
+
+$routes->group('', ['filter' => 'AlreadyLoggedIn'], function ($routes) {
+    //Protected routes
+    $routes->get('login', 'Auth::index');
+    $routes->get('signup', 'Auth::signup');
+});
 
 
 /*
