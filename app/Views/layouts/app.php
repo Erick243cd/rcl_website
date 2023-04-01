@@ -105,10 +105,8 @@
 
                     <li class="<?= ($page == 'live-radio') ? 'active' : "" ?> cat-2"><a
                                 href="<?= site_url('live-radio') ?>">Ecouter en direct</a></li>
-                    <li class="<?= ($page == 'press-review') ? 'active' : "" ?> cat-3"><a
-                                href="<?= site_url('press-review') ?>">Presse</a></li>
-                    <li class="<?= ($page == 'tags') ? 'active' : "" ?> cat-4"><a
-                                href="<?= site_url('tags/' . "enrolement") ?>">#Enrôlement</a></li>
+                    <li class="<?= ($page == 'contact') ? 'active' : "" ?> cat-3"><a
+                                    href="<?= site_url('contact') ?>">Contact</a></li>
                 </ul>
 
                 <div class="nav-btns">
@@ -139,8 +137,20 @@
                     </li>
                     <li class="<?= $page == 'news' ? 'active-link' : '' ?>"><a
                                 href="<?= $page == 'news' ? '#' : site_url('news') ?>">Actualités</a></li>
-                    <li class="<?= $page == 'login' ? 'active-link' : '' ?>"><a
-                                href="<?= $page == 'login' ? '#' : site_url('login') ?>">Login</a></li>
+                    <?php if (isset($user_data)): ?>
+
+                        <li class="<?= $page == 'logout' ? 'active-link' : '' ?>">
+                            <a onclick="return confirm('Etes-vous sur de vous déconnecter ?');" href="<?= $page == 'logout' ? '#' : site_url('logout') ?>">Logout</a>
+                        </li>
+                        <li class="<?= $page == 'dashboard' ? 'active-link' : '' ?>">
+                            <a href="<?= $page == 'dashboard' ? '#' : site_url('dashboard') ?>">Dashboard</a>
+                        </li>
+                    <?php else : ?>
+                        <li class="<?= $page == 'login' ? 'active-link' : '' ?>">
+                            <a href="<?= $page == 'login' ? '#' : site_url('login') ?>">Login</a>
+                        </li>
+                    <?php endif; ?>
+
                     <li class="<?= $page == 'contact' ? 'active-link' : '' ?>"><a
                                 href="<?= $page == 'contact' ? '#' : site_url('contact') ?>">Contact</a></li>
 

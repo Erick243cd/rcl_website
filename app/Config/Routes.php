@@ -38,8 +38,9 @@ $routes->get('/podcasts', 'Podcasts::index');
 $routes->get('/news', 'Posts::news');
 $routes->get('/live-radio', 'Pages::liveRadio');
 $routes->get('/contact', 'Pages::contact');
-$routes->get('/grocery', 'Examples::customers_management');
 $routes->post('/search-post', 'Posts::search');
+
+$routes->get('/logout', 'Auth::logout');
 
 $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
     //Protected routes
@@ -51,8 +52,13 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
     $routes->get('list-users', 'Users::index');
     $routes->get('/add-picture', 'Users::addImage');
     $routes->get('/save-picture', 'Users::saveImage');
+    $routes->get('/delete-user/(:any)', 'Users::deleteUser/$1');
+    $routes->get('/active-user/(:any)', 'Users::active/$1');
+
+    $routes->post('/save-picture', 'Users::saveImage');
     $routes->get('/add-user', 'Users::create');
     $routes->post('/add-user', 'Users::create');
+
     $routes->get('/add-member', 'Team::create');
     $routes->get('/change-pwd', 'Auth::change');
 
@@ -62,11 +68,27 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
     $routes->get('post-edit/(:any)', 'Posts::edit/$1');
     $routes->post('edit-post/(:any)', 'Posts::edit/$1');
 
+    $routes->get('remove-as-featured/(:any)', 'Posts::removeAsFeatured/$1');
+    $routes->get('make-as-featured/(:any)', 'Posts::makeAsFeatured/$1');
+
+    $routes->get('remove-as-most-format/(:any)', 'Posts::removeAsMostFormat/$1');
+    $routes->get('make-as-most-format/(:any)', 'Posts::makeAsMostFormat/$1');
+
     $routes->get('delete-post/(:any)', 'Posts::delete/$1');
     $routes->get('list-posts', 'Posts::index');
     $routes->get('post-image/(:any)', 'Posts::addImage/$1');
     $routes->post('post-image/(:any)', 'Posts::addImage/$1');
     $routes->post('save-post-picture', 'Posts::saveImage');
+
+
+    $routes->get('list-podcasts', 'Podcasts::list');
+    $routes->get('add-podcast', 'Podcasts::create');
+    $routes->post('add-podcast', 'Podcasts::create');
+    $routes->get('delete-podcast/(:any)', 'Podcasts::delete/$1');
+    $routes->get('podcast-edit/(:any)', 'Podcasts::edit/$1');
+    $routes->post('podcast-edit/(:any)', 'Podcasts::edit/$1');
+
+
 
 
     $routes->get('coords', 'Coords::index');
@@ -77,7 +99,9 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
 $routes->group('', ['filter' => 'AlreadyLoggedIn'], function ($routes) {
     //Protected routes
     $routes->get('login', 'Auth::index');
+    $routes->post('login', 'Auth::index');
     $routes->get('signup', 'Auth::signup');
+    $routes->post('signup', 'Auth::signup');
 });
 
 

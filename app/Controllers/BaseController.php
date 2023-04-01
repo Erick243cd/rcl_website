@@ -6,12 +6,15 @@ use App\Models\CategoryModel;
 use App\Models\CoordonneeModel;
 use App\Models\PodcastModel;
 use App\Models\PostModel;
+use App\Models\RoleModel;
+use App\Models\UserModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Config\Services;
+use Couchbase\Role;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -60,9 +63,12 @@ abstract class BaseController extends Controller
         $this->podcastModel = new PodcastModel();
         $this->categoryModel = new CategoryModel();
         $this->coordonneeModel = new CoordonneeModel();
+        $this->roleModel = new RoleModel();
+        $this->userModel = new UserModel();
 
         // Preload any models, libraries, etc, here.
-        helper(['text', 'form', 'url']);
+        helper(['text', 'form', 'url', 'custom']);
         $this->session = Services::session();
+        $this->validation = Services::validation();
     }
 }

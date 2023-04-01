@@ -43,7 +43,8 @@ class Pages extends BaseController
                 ->where(['is_deleted' => '0'])->findAll(4),
 
             'one_post_by_category' => $this->postModel->onePostByCategory(),
-            'categories' => $this->postModel->postNumberByCategory()
+            'categories' => $this->postModel->postNumberByCategory(),
+            'user_data' => session()->get('user_data')
         ];
 
 
@@ -66,6 +67,7 @@ class Pages extends BaseController
                 ->join('categories', 'posts.category_id=categories.categoryId')
                 ->orderBy('postId', 'DESC')
                 ->where(['is_featured' => '', 'is_deleted' => '0'])->findAll(3),
+            'user_data' => session()->get('user_data')
         ];
         echo view('pages/live-radio', $data);
     }
@@ -82,6 +84,7 @@ class Pages extends BaseController
                 ->join('categories', 'posts.category_id=categories.categoryId')
                 ->orderBy('postId', 'DESC')
                 ->where(['is_featured' => '', 'is_deleted' => '0'])->findAll(3),
+            'user_data' => session()->get('user_data')
         ];
         echo view('pages/contact', $data);
     }

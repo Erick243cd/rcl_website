@@ -11,7 +11,7 @@ class PostModel extends Model
     protected $primaryKey = 'postId';
     protected $useAutoIncrement = true;
 
-    protected $allowedFields = ['title', 'description', 'category_id', 'created_at', 'updated_at', 'postImage', 'viewNumber', 'is_featured', 'is_active', 'is_most_format', 'is_deleted'];
+    protected $allowedFields = ['title', 'slug', 'description', 'category_id', 'created_at', 'updated_at', 'postImage', 'viewNumber', 'is_featured', 'is_active', 'is_most_format', 'is_deleted'];
 
 
     public function postsByCategory($categorySlug)
@@ -26,7 +26,7 @@ class PostModel extends Model
     {
         return $this->asObject()
             ->join('categories', 'categories.categoryId=posts.category_id')
-            ->where(['posts.is_deleted' =>'0'])
+            ->where(['posts.is_deleted' => '0'])
             ->groupBy('category_id')
             ->orderBy('categories.name', 'ASC')->findAll();
     }
