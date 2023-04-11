@@ -92,7 +92,7 @@ $user_data = session()->get('user_data');
 
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                        class="feather icon-map text-info"></i></span><span class="pcoded-mtext">Posts</span></a>
+                                        class="feather icon-map text-success"></i></span><span class="pcoded-mtext">Posts</span></a>
                         <ul class="pcoded-submenu">
                             <li><a href="<?= site_url() ?>add-post">Ajouter</a></li>
                             <li><a href="<?= site_url() ?>list-posts">Liste</a></li>
@@ -101,7 +101,7 @@ $user_data = session()->get('user_data');
 
                     <li class="nav-item pcoded-hasmenu">
                         <a href="#!" class="nav-link"><span class="pcoded-micon"><i
-                                        class="feather icon-map text-info"></i></span><span class="pcoded-mtext">Emissions</span></a>
+                                        class="feather icon-cast text-danger"></i></span><span class="pcoded-mtext">Emissions</span></a>
                         <ul class="pcoded-submenu">
                             <li><a href="<?= site_url() ?>add-podcast">Ajouter</a></li>
                             <li><a href="<?= site_url() ?>list-podcasts">Liste</a></li>
