@@ -12,7 +12,7 @@
     <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/bootstrap.min.css"/>
 
     <link rel="stylesheet" href="<?= site_url() ?>public/assets/css/font-awesome.min.css">
-
+    <link href="<?= site_url('public/assets/img/favicon.png')?>" rel="shortcut icon" type="image/png" />
     <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/style.css"/>
 
 
@@ -228,13 +228,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         </div>
                         <div class="col-md-6">
                             <div class="footer-widget">
-                                <h3 class="footer-title">Catagories</h3>
-                                <ul class="footer-links">
-                                    <li><a href="category.html">Web Design</a></li>
-                                    <li><a href="category.html">JavaScript</a></li>
-                                    <li><a href="category.html">Css</a></li>
-                                    <li><a href="category.html">Jquery</a></li>
-                                </ul>
+                                <h3 class="footer-title">Categories</h3>
+<!--                                <ul class="footer-links">-->
+<!--                                    <li><a href="category.html">Web Design</a></li>-->
+<!--                                    <li><a href="category.html">JavaScript</a></li>-->
+<!--                                    <li><a href="category.html">Css</a></li>-->
+<!--                                    <li><a href="category.html">Jquery</a></li>-->
+<!--                                </ul>-->
                             </div>
                         </div>
                     </div>
@@ -249,7 +249,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             </form>
                         </div>
                         <ul class="footer-social">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a target="_blank" href="https://web.facebook.com/RCLTVKolwezi"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                             <li><a href="#"><i class="fa fa-pinterest"></i></a></li>

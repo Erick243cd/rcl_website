@@ -7,6 +7,18 @@ use App\Models\PostModel;
 
 class Pages extends BaseController
 {
+    public function __construct() {}
+
+    public function beforeHome()
+    {
+        $data = [
+            'title' => "Bienvenue | RCL",
+            'page' => 'before-home',
+            'subtitle' => 'Radio Communautaire du Lualaba RCL',
+        ];
+        echo view('pages/before-home', $data);
+    }
+
     public function index()
     {
         $data = [
@@ -17,7 +29,7 @@ class Pages extends BaseController
             'features' => $this->postModel->asObject()
                 ->join('categories', 'posts.category_id=categories.categoryId')
                 ->orderBy('postId', 'DESC')
-                ->where('is_featured', '1')->findAll(2),
+                ->where(['is_featured' => '1', 'is_deleted' => '0'])->findAll(2),
 
             'news' => $this->postModel->asObject()
                 ->join('categories', 'posts.category_id=categories.categoryId')
@@ -27,11 +39,11 @@ class Pages extends BaseController
             'recent' => $this->postModel->asObject()
                 ->join('categories', 'posts.category_id=categories.categoryId')
                 ->orderBy('postId', 'DESC')
-                ->where('is_featured', '0')
+                ->where(['is_featured' => '1', 'is_deleted' => '0'])
                 ->findAll(6),
             'most_format' => $this->postModel->asObject()
                 ->join('categories', 'posts.category_id=categories.categoryId')
-                ->where('is_most_format', '1')
+                ->where(['is_most_format' => '1', 'is_deleted' => '0'])
                 ->first(),
             'most_reads' => $this->postModel->asObject()
                 ->join('categories', 'posts.category_id=categories.categoryId')

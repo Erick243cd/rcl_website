@@ -39,6 +39,7 @@ $routes->get('/news', 'Posts::news');
 $routes->get('/live-radio', 'Pages::liveRadio');
 $routes->get('/contact', 'Pages::contact');
 $routes->post('/search-post', 'Posts::search');
+$routes->get('/before-home', 'Pages::beforeHome');
 
 $routes->get('/logout', 'Auth::logout');
 

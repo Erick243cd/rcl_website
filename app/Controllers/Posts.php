@@ -346,6 +346,7 @@ class Posts extends BaseController
                 'posts' => $this->postModel->asObject()
                     ->join('categories', 'posts.category_id=categories.categoryId')
                     ->like('title', $request)->orLike('description', $request)->orLike('name', $request)
+                    ->where('is_deleted', '0')
                     ->orderBy('postId', 'DESC')->findAll(),
                 'user_data' => session()->get('user_data')
             ];

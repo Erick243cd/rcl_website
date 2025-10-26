@@ -38,7 +38,7 @@
                         </figure>
                     </div>
                     <div class="post-shares sticky-shares">
-                        <a href="#" class="share-facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="https://web.facebook.com/RCLTVKolwezi" target="_blank" class="share-facebook"><i class="fa fa-facebook"></i></a>
                         <a href="#" class="share-twitter"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="share-google-plus"><i class="fa fa-instagram"></i></a>
                         <a href="#" class="share-linkedin"><i class="fa fa-linkedin"></i></a>
