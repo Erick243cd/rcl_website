@@ -36,7 +36,7 @@ $routes->get('/post-detail/(:any)', 'Posts::detail/$1');
 $routes->get('/posts-by-category/(:any)', 'Posts::postByCategory/$1');
 $routes->get('/podcasts', 'Podcasts::index');
 $routes->get('/news', 'Posts::news');
-$routes->get('/live-radio', 'Pages::liveRadio');
+$routes->get('/live-radio', 'Pages::beforeHome');
 $routes->get('/contact', 'Pages::contact');
 $routes->post('/search-post', 'Posts::search');
 $routes->get('/before-home', 'Pages::beforeHome');
@@ -93,7 +93,7 @@ $routes->group('', ['filter' => 'AuthCheck'], function ($routes) {
 
 
     $routes->get('coords', 'Coords::index');
-    $routes->get('coords-update', 'Coords::update');
+    $routes->match(['get', 'post'], 'coords-update', 'Coords::update');
 
 });
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,32 +10,41 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
 
-    <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/bootstrap.min.css" />
 
     <link rel="stylesheet" href="<?= site_url() ?>public/assets/css/font-awesome.min.css">
-    <link href="<?= site_url('public/assets/img/favicon.png')?>" rel="shortcut icon" type="image/png" />
-    <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/style.css"/>
+    <link href="<?= site_url('public/assets/img/favicon.png') ?>" rel="shortcut icon" type="image/png" />
+    <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/style.css" />
+    <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/custom.css" />
 
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script nonce="0755d8c3-8834-4088-b550-c48a6816d7a1">(function (w, d) {
-            !function (f, g, h, i) {
+    <script nonce="0755d8c3-8834-4088-b550-c48a6816d7a1">
+        (function(w, d) {
+            ! function(f, g, h, i) {
                 f[h] = f[h] || {};
                 f[h].executed = [];
-                f.zaraz = {deferred: [], listeners: []};
+                f.zaraz = {
+                    deferred: [],
+                    listeners: []
+                };
                 f.zaraz.q = [];
-                f.zaraz._f = function (j) {
-                    return function () {
+                f.zaraz._f = function(j) {
+                    return function() {
                         var k = Array.prototype.slice.call(arguments);
-                        f.zaraz.q.push({m: j, a: k})
+                        f.zaraz.q.push({
+                            m: j,
+                            a: k
+                        })
                     }
                 };
                 for (const l of ["track", "set", "debug"]) f.zaraz[l] = f.zaraz._f(l);
                 f.zaraz.init = () => {
-                    var m = g.getElementsByTagName(i)[0], n = g.createElement(i),
+                    var m = g.getElementsByTagName(i)[0],
+                        n = g.createElement(i),
                         o = g.getElementsByTagName("title")[0];
                     o && (f[h].t = g.getElementsByTagName("title")[0].text);
                     f[h].x = Math.random();
@@ -47,7 +57,13 @@
                     f[h].k = f.screen.colorDepth;
                     f[h].n = g.characterSet;
                     f[h].o = (new Date).getTimezoneOffset();
-                    if (f.dataLayer) for (const s of Object.entries(Object.entries(dataLayer).reduce(((t, u) => ({...t[1], ...u[1]}))))) zaraz.set(s[0], s[1], {scope: "page"});
+                    if (f.dataLayer)
+                        for (const s of Object.entries(Object.entries(dataLayer).reduce(((t, u) => ({
+                                ...t[1],
+                                ...u[1]
+                            }))))) zaraz.set(s[0], s[1], {
+                            scope: "page"
+                        });
                     f[h].q = [];
                     for (; f.zaraz.q.length;) {
                         const v = f.zaraz.q.shift();
@@ -67,7 +83,8 @@
                 };
                 ["complete", "interactive"].includes(g.readyState) ? zaraz.init() : f.addEventListener("DOMContentLoaded", zaraz.init)
             }(w, d, "zarazData", "script");
-        })(window, document);</script>
+        })(window, document);
+    </script>
 
     <style>
         .active {
@@ -85,200 +102,203 @@
         }
     </style>
 </head>
+
 <body>
 
-<header id="header">
-    <div id="nav">
-        <div id="nav-fixed">
-            <div class="container">
-                <div class="nav-logo">
-                    <a href="<?= $page == 'home' ? "" : site_url() ?>" class="logo"><img
+    <header id="header">
+        <div id="nav">
+            <div id="nav-fixed">
+                <div class="container">
+                    <div class="nav-logo">
+                        <a href="<?= $page == 'home' ? "" : site_url() ?>" class="logo"><img
                                 src="<?= site_url() ?>public/assets/img/logo.png" alt=""></a>
-                </div>
-
-                <ul class="nav-menu nav navbar-nav">
-                    <li class="<?= ($page == 'news') ? 'active' : "" ?>"><a
-                                href="<?= site_url('news') ?>">Actualités</a></li>
-                    <li class="cat-1 <?= ($page == 'podcasts') ? 'active' : "" ?>"><a
-                                href="<?= site_url('podcasts') ?>">Emissions</a>
-                    </li>
-
-                    <li class="<?= ($page == 'live-radio') ? 'active' : "" ?> cat-2"><a
-                                href="<?= site_url('live-radio') ?>">Ecouter en direct</a></li>
-                    <li class="<?= ($page == 'contact') ? 'active' : "" ?> cat-3"><a
-                                    href="<?= site_url('contact') ?>">Contact</a></li>
-                </ul>
-
-                <div class="nav-btns">
-                    <button role="tab" class="aside-btn"><i class="fa fa-bars"></i></button>
-                    <button role="tab" class="search-btn"><i class="fa fa-search"></i></button>
-                    <?= form_open('search-post') ?>
-                    <?= csrf_field() ?>
-                    <div class="search-form">
-                        <input class="search-input" type="text" required name="search"
-                               placeholder="Entrer votre recherche...">
-                        <button class="search-close"><i class="fa fa-times"></i></button>
-
                     </div>
-                    <?= form_close() ?>
+
+                    <ul class="nav-menu nav navbar-nav">
+                        <li class="<?= ($page == 'news') ? 'active' : "" ?>"><a
+                                href="<?= site_url('news') ?>">Actualités</a></li>
+                        <li class="cat-1 <?= ($page == 'podcasts') ? 'active' : "" ?>"><a
+                                href="<?= site_url('podcasts') ?>">Emissions</a>
+                        </li>
+
+                        <li class="<?= ($page == 'live-radio') ? 'active' : "" ?> cat-2"><a
+                                href="<?= site_url('live-radio') ?>">Ecouter en direct</a></li>
+                        <li class="<?= ($page == 'contact') ? 'active' : "" ?> cat-3"><a
+                                href="<?= site_url('contact') ?>">Contact</a></li>
+                    </ul>
+
+                    <div class="nav-btns">
+                        <button role="tab" class="aside-btn"><i class="fa fa-bars"></i></button>
+                        <button role="tab" class="search-btn"><i class="fa fa-search"></i></button>
+                        <?= form_open('search-post') ?>
+                        <?= csrf_field() ?>
+                        <div class="search-form">
+                            <input class="search-input" type="text" required name="search"
+                                placeholder="Entrer votre recherche...">
+                            <button class="search-close"><i class="fa fa-times"></i></button>
+
+                        </div>
+                        <?= form_close() ?>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
-        <div id="nav-aside">
-            <div class="section-row">
-                <ul class="nav-aside-menu">
-                    <li class="<?= $page == 'home' ? 'active-link' : '' ?>"><a
+            <div id="nav-aside">
+                <div class="section-row">
+                    <ul class="nav-aside-menu">
+                        <li class="<?= $page == 'home' ? 'active-link' : '' ?>"><a
                                 href="<?= $page == 'home' ? '#' : site_url('home') ?>">Accueil</a></li>
-                    <li class="<?= $page == 'podcasts' ? 'active-link' : '' ?>"><a
+                        <li class="<?= $page == 'podcasts' ? 'active-link' : '' ?>"><a
                                 href="<?= $page == 'podcasts' ? '#' : site_url('podcasts') ?>">Emissions</a></li>
-                    <li class="<?= $page == 'live-radio' ? 'active-link' : '' ?>"><a
+                        <li class="<?= $page == 'live-radio' ? 'active-link' : '' ?>"><a
                                 href="<?= $page == 'live-radio' ? '#' : site_url('live-radio') ?>">Radio en direct</a>
-                    </li>
-                    <li class="<?= $page == 'news' ? 'active-link' : '' ?>"><a
+                        </li>
+                        <li class="<?= $page == 'news' ? 'active-link' : '' ?>"><a
                                 href="<?= $page == 'news' ? '#' : site_url('news') ?>">Actualités</a></li>
-                    <?php if (isset($user_data)): ?>
+                        <?php if (isset($user_data)): ?>
 
-                        <li class="<?= $page == 'logout' ? 'active-link' : '' ?>">
-                            <a onclick="return confirm('Etes-vous sur de vous déconnecter ?');" href="<?= $page == 'logout' ? '#' : site_url('logout') ?>">Logout</a>
-                        </li>
-                        <li class="<?= $page == 'dashboard' ? 'active-link' : '' ?>">
-                            <a href="<?= $page == 'dashboard' ? '#' : site_url('dashboard') ?>">Dashboard</a>
-                        </li>
-                    <?php else : ?>
-                        <li class="<?= $page == 'login' ? 'active-link' : '' ?>">
-                            <a href="<?= $page == 'login' ? '#' : site_url('login') ?>">Login</a>
-                        </li>
-                    <?php endif; ?>
+                            <li class="<?= $page == 'logout' ? 'active-link' : '' ?>">
+                                <a onclick="return confirm('Etes-vous sur de vous déconnecter ?');" href="<?= $page == 'logout' ? '#' : site_url('logout') ?>">Logout</a>
+                            </li>
+                            <li class="<?= $page == 'dashboard' ? 'active-link' : '' ?>">
+                                <a href="<?= $page == 'dashboard' ? '#' : site_url('dashboard') ?>">Dashboard</a>
+                            </li>
+                        <?php else : ?>
+                            <li class="<?= $page == 'login' ? 'active-link' : '' ?>">
+                                <a href="<?= $page == 'login' ? '#' : site_url('login') ?>">Login</a>
+                            </li>
+                        <?php endif; ?>
 
-                    <li class="<?= $page == 'contact' ? 'active-link' : '' ?>"><a
+                        <li class="<?= $page == 'contact' ? 'active-link' : '' ?>"><a
                                 href="<?= $page == 'contact' ? '#' : site_url('contact') ?>">Contact</a></li>
 
-                </ul>
-            </div>
-            <div class="section-row">
-                <h3>Actualités récentes</h3>
+                    </ul>
+                </div>
+                <div class="section-row">
+                    <h3>Actualités récentes</h3>
 
-                <?php if (isset($news)) : ?>
-                    <?php foreach ($news as $new): ?>
-                        <div class="post post-widget">
-                            <a title="voir le detail" class="post-img"
-                               href="<?= site_url('post-detail/' . $new->slug) ?>"><img
+                    <?php if (isset($news)) : ?>
+                        <?php foreach ($news as $new): ?>
+                            <div class="post post-widget">
+                                <a title="voir le detail" class="post-img"
+                                    href="<?= site_url('post-detail/' . $new->slug) ?>"><img
                                         src="<?= site_url() ?>public/assets/img/posts/<?= $new->postImage ?>"
                                         alt=""></a>
-                            <div class="post-body">
-                                <h3 class="post-title"><a
+                                <div class="post-body">
+                                    <h3 class="post-title"><a
                                             href="<?= site_url('post-detail/' . $new->slug) ?>"><?= $new->title ?></a>
-                                </h3>
+                                    </h3>
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach ?>
-                <?php endif; ?>
-            </div>
-            <div class="section-row">
-                <h3>Suivez-nous</h3>
-                <ul class="nav-aside-social">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                </ul>
-            </div>
-            <button class="nav-aside-close"><i class="fa fa-times"></i></button>
-        </div>
-    </div>
-
-
-    <?= $this->renderSection("content") ?>
-
-    <footer id="footer">
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="footer-widget">
-                        <div class="footer-logo">
-                            <a href="index.html" class="logo"><img src="img/logo.png" alt=""></a>
-                        </div>
-                        <ul class="footer-nav">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Advertisement</a></li>
-                        </ul>
-                        <div class="footer-copyright">
-<span>&copy;
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i
-            class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com/"
-                                                                target="_blank">Colorlib</a>
-</span>
-                        </div>
-                    </div>
+                        <?php endforeach ?>
+                    <?php endif; ?>
                 </div>
-                <div class="col-md-4">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="footer-widget">
-                                <h3 class="footer-title">About Us</h3>
-                                <ul class="footer-links">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="#">Join Us</a></li>
-                                    <li><a href="contact.html">Contacts</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="footer-widget">
-                                <h3 class="footer-title">Categories</h3>
-<!--                                <ul class="footer-links">-->
-<!--                                    <li><a href="category.html">Web Design</a></li>-->
-<!--                                    <li><a href="category.html">JavaScript</a></li>-->
-<!--                                    <li><a href="category.html">Css</a></li>-->
-<!--                                    <li><a href="category.html">Jquery</a></li>-->
-<!--                                </ul>-->
-                            </div>
-                        </div>
-                    </div>
+                <div class="section-row">
+                    <h3>Suivez-nous</h3>
+                    <ul class="nav-aside-social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    </ul>
                 </div>
-                <div class="col-md-3">
-                    <div class="footer-widget">
-                        <h3 class="footer-title">Join our Newsletter</h3>
-                        <div class="footer-newsletter">
-                            <form>
-                                <input class="input" type="email" name="newsletter" placeholder="Enter your email">
-                                <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
-                            </form>
-                        </div>
-                        <ul class="footer-social">
-                            <li><a target="_blank" href="https://web.facebook.com/RCLTVKolwezi"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
+                <button class="nav-aside-close"><i class="fa fa-times"></i></button>
             </div>
-
         </div>
 
-    </footer>
 
-    <script src="<?= site_url() ?>public/assets/js/jquery.min.js"></script>
-    <script src="<?= site_url() ?>public/assets/js/bootstrap.min.js"></script>
-    <script src="<?= site_url() ?>public/assets/js/main.js"></script>
+        <?= $this->renderSection("content") ?>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+        <footer id="footer">
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+            <div class="container">
 
-        gtag('js', new Date());
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a href="index.html" class="logo"><img src="img/logo.png" alt=""></a>
+                            </div>
+                            <ul class="footer-nav">
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Advertisement</a></li>
+                            </ul>
+                            <div class="footer-copyright">
+                                <span>&copy;
+                                    Copyright &copy;<script>
+                                        document.write(new Date().getFullYear());
+                                    </script> All rights reserved | This template is made with <i
+                                        class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com/"
+                                        target="_blank">Colorlib</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="footer-widget">
+                                    <h3 class="footer-title">About Us</h3>
+                                    <ul class="footer-links">
+                                        <li><a href="about.html">About Us</a></li>
+                                        <li><a href="#">Join Us</a></li>
+                                        <li><a href="contact.html">Contacts</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="footer-widget">
+                                    <h3 class="footer-title">Categories</h3>
+                                    <!--                                <ul class="footer-links">-->
+                                    <!--                                    <li><a href="category.html">Web Design</a></li>-->
+                                    <!--                                    <li><a href="category.html">JavaScript</a></li>-->
+                                    <!--                                    <li><a href="category.html">Css</a></li>-->
+                                    <!--                                    <li><a href="category.html">Jquery</a></li>-->
+                                    <!--                                </ul>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-widget">
+                            <h3 class="footer-title">Join our Newsletter</h3>
+                            <div class="footer-newsletter">
+                                <form>
+                                    <input class="input" type="email" name="newsletter" placeholder="Enter your email">
+                                    <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+                                </form>
+                            </div>
+                            <ul class="footer-social">
+                                <li><a target="_blank" href="https://web.facebook.com/RCLTVKolwezi"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-        gtag('config', 'UA-23581568-13');
-    </script>
-    <script defer
+            </div>
+
+        </footer>
+
+        <script src="<?= site_url() ?>public/assets/js/jquery.min.js"></script>
+        <script src="<?= site_url() ?>public/assets/js/bootstrap.min.js"></script>
+        <script src="<?= site_url() ?>public/assets/js/main.js"></script>
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'UA-23581568-13');
+        </script>
+        <script defer
             src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993"
             integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
             data-cf-beacon='{"rayId":"79a8d8d7cd3f9cc0","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.2.0","si":100}'
@@ -286,4 +306,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </body>
 
 <!-- Mirrored from preview.colorlib.com/theme/webmag/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 17 Feb 2023 05:57:06 GMT -->
+
 </html>

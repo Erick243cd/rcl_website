@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\CoordonneeModel;
 
 class Coords extends BaseController
 {

@@ -1,251 +1,59 @@
 <?= $this->extend("layouts/app") ?>
+<?= $this->extend("layouts/app") ?>
 <?= $this->section("content") ?>
 
-    </header>
-    <div class="section">
+<section class="text-center py-5" style="background: radial-gradient(circle at center, #0f0f1b 0%, #050509 100%); color: #fff; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: 'Poppins', sans-serif;">
 
-        <div class="container">
+    <div class="container text-center">
+        <h1>RCL TV</h1>
+        <p class="tagline">Plus proche de la communauté 🎙️</p>
 
-            <div class="row">
-                <?php foreach ($features as $row): ?>
-                    <div class="col-md-6">
-                        <div class="post post-thumb">
-                            <a class="post-img" href="<?= site_url('post-detail/' . $row->slug) ?>"><img
-                                        src="<?= site_url('public/assets/img/posts/' . $row->postImage) ?>"
-                                        alt=""></a>
-                            <div class="post-body">
-                                <div class="post-meta">
-                                    <a class="post-category cat-<?= $row->category_color ?>"
-                                       href="<?= site_url('posts-by-category/' . $row->category_slug) ?>"><?= $row->name ?></a>
-                                    <span class="post-date"><?= date('M d, Y', strtotime($row->created_at)) ?></span>
-                                </div>
-                                <h3 class="post-title"><a
-                                            href="<?= site_url('post-detail/' . $row->slug) ?>"><?= $row->title ?></a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+        <div class="micro-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/2891/2891628.png" class="cap" alt="Casquette">
+            <i class="fa-solid fa-microphone-lines micro mt-4" id="micro"></i>
 
-
+            <div class="iframe-container" id="iframeContainer">
+                <iframe id="radioPlayer"
+                    src=""
+                    allow="autoplay"
+                    allowtransparency="true">
+                </iframe>
             </div>
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h2>Nouvelles actualités</h2>
-                    </div>
-                </div>
-                <?php foreach ($recent as $row): ?>
-                    <div class="col-md-4">
-                        <div class="post">
-                            <a class="post-img" href="<?= site_url('post-detail/' . $row->slug) ?>"><img
-                                        src="<?= site_url() ?>public/assets/img/posts/<?= $row->postImage ?>"
-                                        alt=""></a>
-                            <div class="post-body">
-                                <div class="post-meta">
-                                    <a class="post-category cat-<?= $row->category_color ?>"
-                                       href="<?= site_url('posts-by-category/' . $row->category_slug) ?>"><?= $row->name ?></a>
-                                    <span class="post-date"><?= date('M d, Y', strtotime($row->created_at)) ?></span>
-                                </div>
-                                <h3 class="post-title"><a
-                                            href="<?= site_url('post-detail/' . $row->slug) ?>"><?= $row->title ?></a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-
-                <div class="clearfix visible-md visible-lg"></div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <?php if (isset($most_format)): ?>
-                            <div class="col-md-12">
-                                <div class="post post-thumb">
-                                    <a class="post-img" href="<?= site_url('post-detail/' . $most_format->slug) ?>"><img
-                                                src="<?= site_url() ?>public/assets/img/posts/<?= $most_format->postImage ?>"
-                                                alt=""></a>
-                                    <div class="post-body">
-                                        <div class="post-meta">
-                                            <a class="post-category cat-3"
-                                               href="<?= site_url('posts-by-category/' . $most_format->category_slug) ?>"><?= $most_format->name ?></a>
-                                            <span class="post-date"><?= date('M d, Y', strtotime($most_format->created_at)) ?></span>
-                                        </div>
-                                        <h3 class="post-title"><a
-                                                    href="<?= site_url('post-detail/' . $most_format->slug) ?>"><?= $most_format->title ?></a>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endif; ?>
-
-                        <?php foreach ($one_post_by_category as $item): ?>
-                            <div class="col-md-6">
-                                <div class="post">
-                                    <a class="post-img" href="<?= site_url('post-detail/' . $item->slug) ?>"><img
-                                                src="<?= site_url() ?>public/assets/imsg/posts/<?= $item->postImage ?>"
-                                                alt=""></a>
-                                    <div class="post-body">
-                                        <div class="post-meta">
-                                            <a class="post-category cat-<?= $item->category_color ?>"
-                                               href="<?= site_url('posts-by-category/' . $item->category_slug) ?>"><?= $item->name ?></a>
-                                            <span class="post-date"><?= date('M d, Y', strtotime($item->created_at)) ?></span>
-                                        </div>
-                                        <h3 class="post-title"><a
-                                                    href="<?= site_url('post-detail/' . $item->slug) ?>"><?= $item->title ?></a>
-                                        </h3>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <div class="col-md-4">
-
-                    <div class="aside-widget">
-                        <div class="section-title">
-                            <h2>Les plus lues</h2>
-                        </div>
-                        <?php foreach ($most_reads as $item): ?>
-                            <div class="post post-widget">
-                                <a class="post-img" href="<?= site_url('post-detail/' . $item->slug) ?>"><img
-                                            src="<?= site_url() ?>public/assets/img/posts/<?= $item->postImage ?>"
-                                            alt=""></a>
-                                <div class="post-body">
-                                    <h3 class="post-title"><a
-                                                href="<?= site_url('post-detail/' . $item->slug) ?>"><?= $item->title ?></a>
-                                    </h3>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-
-                    </div>
-
-                    <div class="aside-widget text-center">
-                        <a href="#" style="display: inline-block;margin: auto;">
-                            <img class="img-responsive" src="<?= site_url() ?>public/assets/img/ad-1.jpg" alt="">
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-
         </div>
 
+        <button class="btn-listen mt-4" id="btnPlay">Écouter maintenant</button>
+    </div>
     </div>
 
-    <div class="section section-grey">
+</section>
 
-        <div class="container">
+<script>
+    const micro = document.getElementById('micro');
+    const btnPlay = document.getElementById('btnPlay');
+    const player = document.getElementById('radioPlayer');
+    const iframeContainer = document.getElementById('iframeContainer');
+    let playing = false;
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title text-center">
-                        <h2>Autres actualités</h2>
-                    </div>
-                </div>
-                <?php foreach ($most_reads as $item): ?>
-                    <div class="col-md-4">
-                        <div class="post">
-                            <a class="post-img" href="<?= site_url('post-detail/' . $item->slug) ?>"><img
-                                        src="<?= site_url() ?>public/assets/img/posts/<?= $item->postImage ?>"
-                                        alt=""></a>
-                            <div class="post-body">
-                                <div class="post-meta">
-                                    <a class="post-category cat-<?= $item->category_color ?>"
-                                       href="<?= site_url('posts-by-category/' . $item->category_slug) ?>"><?= $item->name ?></a>
-                                    <span class="post-date"><?= date('M d, Y', strtotime($item->created_at)) ?></span>
-                                </div>
-                                <h3 class="post-title"><a href="<?= site_url('post-detail/' . $item->slug) ?>">Chrome
-                                        <?= $item->title ?></a></h3>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+    function togglePlay() {
+        playing = !playing;
+        micro.classList.toggle('fa-beat-fade', playing);
 
-            </div>
+        if (playing) {
+            iframeContainer.style.display = "block";
+            // Charger directement le flux avec autoplay
+            player.src = "https://a3.asurahosting.com/public/rcl_tv/embed?theme=dark&autoplay=1";
+            btnPlay.textContent = "En direct...";
+            btnPlay.disabled = true;
+        } else {
+            player.src = "";
+            iframeContainer.style.display = "none";
+            btnPlay.textContent = "Écouter maintenant";
+            btnPlay.disabled = false;
+        }
+    }
 
-        </div>
-
-    </div>
-
-
-    <div class="section">
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-title">
-                                <h2>Toutes les actualités</h2>
-                            </div>
-                        </div>
-                        <?php foreach ($posts as $item): ?>
-                            <div class="col-md-12">
-                                <div class="post post-row">
-                                    <a class="post-img" href="<?= site_url('post-detail/' . $item->slug) ?>"><img
-                                                src="<?= site_url() ?>public/assets/img/posts/<?= $item->postImage ?>"
-                                                alt=""></a>
-                                    <div class="post-body">
-                                        <div class="post-meta">
-                                            <a class="post-category cat-<?= $item->category_color ?>"
-                                               href="<?= site_url('posts-by-category/' . $item->category_slug) ?>"><?= $item->name ?></a>
-                                            <span class="post-date"><?= date('M d, Y', strtotime($item->created_at)) ?></span>
-                                        </div>
-                                        <h3 class="post-title"><a href="<?= site_url('post-detail/' . $item->slug) ?>">
-                                                <?= $item->title ?></a></h3>
-                                        <p> <?= character_limiter($item->description, 100) ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-
-
-                        <div class="col-md-12">
-                            <div class="section-row">
-                                <button class="primary-button center-block">Plus
-                                    d'actualités
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-
-                    <div class="aside-widget text-center">
-                        <a href="#" style="display: inline-block;margin: auto;">
-                            <img class="img-responsive" src="<?= site_url() ?>public/assets/img/ad-1.jpg" alt="">
-                        </a>
-                    </div>
-
-
-                    <div class="aside-widget">
-                        <div class="section-title">
-                            <h2>Catégories</h2>
-                        </div>
-                        <div class="category-widget">
-                            <ul>
-                                <?php foreach ($categories as $category): ?>
-                                    <li><a href="<?= site_url('posts-by-category/' . $category->category_slug) ?>"
-                                           class="cat-<?= $category->category_color ?>"><?= $category->name ?>
-                                            <span><?= $category->nb_categories ?></span></a></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
+    btnPlay.addEventListener('click', togglePlay);
+    micro.addEventListener('click', togglePlay);
+</script>
 
 <?= $this->endSection() ?>
