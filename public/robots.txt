@@ -1,2 +1,23 @@
+# robots.txt pour Afrinewsoft
+
+# --------------------
+# 1. Règles générales pour tous les robots (Google, Bing, etc.)
+# --------------------
 User-agent: *
-Disallow: 
+# Autoriser l'exploration de l'intégralité du site par défaut
+Allow: /
+
+# Interdire les zones sensibles et inutiles pour le référencement
+# Remplacez "admin" par le chemin réel de votre zone d'administration si ce n'est pas le cas
+Disallow: /admin/
+Disallow: /backoffice/
+Disallow: /includes/
+Disallow: /assets/
+Disallow: /vendor/
+Disallow: /temp/
+
+# --------------------
+# 2. Emplacement du Sitemap
+# --------------------
+# Indiquer aux moteurs de recherche où trouver le plan du site
+Sitemap: https://rcltv.net/sitemap.xml

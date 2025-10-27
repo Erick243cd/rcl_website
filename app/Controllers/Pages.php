@@ -100,4 +100,6 @@ class Pages extends BaseController
         ];
         echo view('pages/contact', $data);
     }
+
+   
 }

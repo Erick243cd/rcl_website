@@ -1,12 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><?= $title ?? "RCL" ?></title>
+    <title><?= $title ?? "RCL TV" ?></title>
+    <meta name="description"
+        content="Radion Communautaire du Lualaba (RCL) — Plus proche de la communauté. Émissions, interviews et mixs en direct 24/7." />
+    <meta name="keywords" content="radio, rcl, musique, émission, nuit, live radio, podcast" />
+    <meta name="author" content="Radion Communautaire du Lualaba (RCL)" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0f0f1b" />
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
 
@@ -15,7 +21,10 @@
     <link rel="stylesheet" href="<?= site_url() ?>public/assets/css/font-awesome.min.css">
     <link href="<?= site_url('public/assets/img/favicon.png') ?>" rel="shortcut icon" type="image/png" />
     <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/style.css" />
-    <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/custom.css" />
+    <?php if (isset($page) && $page !== 'contact'): ?>
+        <link type="text/css" rel="stylesheet" href="<?= site_url() ?>public/assets/css/custom.css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <?php endif; ?>
 
 
     <!--[if lt IE 9]>
@@ -127,9 +136,14 @@
                                 href="<?= site_url('contact') ?>">Contact</a></li>
                     </ul>
 
-                    <div class="nav-btns">
-                        <button role="tab" class="aside-btn"><i class="fa fa-bars"></i></button>
-                        <button role="tab" class="search-btn"><i class="fa fa-search"></i></button>
+                    <div class="nav-btns text-dark">
+                       
+                        <button role="tab" class="aside-btn" style="color:#000 !important;">
+                            <i class="fa fa-bars" style="color:#000 !important;"></i>
+                        </button>
+                        <button role="tab" class="search-btn" style="color:#000 !important;">
+                            <i class="fa fa-search" style="color:#000 !important;"></i>
+                        </button>
                         <?= form_open('search-post') ?>
                         <?= csrf_field() ?>
                         <div class="search-form">
@@ -220,16 +234,15 @@
                                 <a href="index.html" class="logo"><img src="img/logo.png" alt=""></a>
                             </div>
                             <ul class="footer-nav">
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Advertisement</a></li>
+                                <li><a href="#">Politique de confidentialité</a></li>
+                                <li><a href="#">Publicité</a></li>
                             </ul>
                             <div class="footer-copyright">
                                 <span>&copy;
-                                    Copyright &copy;<script>
+                                    RCL TV &copy;<script>
                                         document.write(new Date().getFullYear());
-                                    </script> All rights reserved | This template is made with <i
-                                        class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com/"
-                                        target="_blank">Colorlib</a>
+                                    </script> Tous droits réservés | by <a href="https://afrinewsoft.com/"
+                                        target="_blank">Afrinewsoft</a>
                                 </span>
                             </div>
                         </div>
@@ -238,41 +251,32 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="footer-widget">
-                                    <h3 class="footer-title">About Us</h3>
+                                    <h3 class="footer-title">RCL TV</h3>
                                     <ul class="footer-links">
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="#">Join Us</a></li>
-                                        <li><a href="contact.html">Contacts</a></li>
+                                        <li><a href="<?= site_url('/news') ?>">Actualités</a></li>
+                                        <li><a href="<?= site_url('/podcasts') ?>">Emission</a></li>
+                                        <li><a href="<?= site_url('/live-radio') ?>">Ecouter en direct</a></li>
+                                        <li><a href="<?= site_url('/contact') ?>">Contacts</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="footer-widget">
-                                    <h3 class="footer-title">Categories</h3>
-                                    <!--                                <ul class="footer-links">-->
-                                    <!--                                    <li><a href="category.html">Web Design</a></li>-->
-                                    <!--                                    <li><a href="category.html">JavaScript</a></li>-->
-                                    <!--                                    <li><a href="category.html">Css</a></li>-->
-                                    <!--                                    <li><a href="category.html">Jquery</a></li>-->
-                                    <!--                                </ul>-->
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="footer-widget">
-                            <h3 class="footer-title">Join our Newsletter</h3>
+                            <h3 class="footer-title">S'inscrire à la Newsletter</h3>
                             <div class="footer-newsletter">
                                 <form>
-                                    <input class="input" type="email" name="newsletter" placeholder="Enter your email">
-                                    <button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+                                    <input class="input" type="email" name="newsletter" placeholder="Entrez votre email">
+                                    <button class="newsletter-btn" onclick="return false;"><i class="fa fa-paper-plane"></i></button>
                                 </form>
                             </div>
                             <ul class="footer-social">
                                 <li><a target="_blank" href="https://web.facebook.com/RCLTVKolwezi"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>

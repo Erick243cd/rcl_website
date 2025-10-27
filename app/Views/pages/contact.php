@@ -11,6 +11,13 @@
                 </ul>
                 <h2>Contact</h2>
             </div>
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="col-md-12">
+                    <div class="alert alert-success">
+                        <?= session()->getFlashdata('success') ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -44,7 +51,8 @@
             <div class="col-md-5 col-md-offset-1">
                 <div class="section-row">
                     <h3>Envoyer un Message</h3>
-                    <form>
+                    <form method="POST" action="<?= site_url('/submit-contact-form') ?>">
+                        <?= csrf_field() ?>
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group">
@@ -68,7 +76,7 @@
                                         <input type="checkbox" name="human_check" required style="vertical-align:middle; margin-right:0.5rem !important;"> Je confirme que je ne suis pas un robot
                                     </label>
                                 </div>
-                                <button class="primary-button">Soumettre</button>
+                                <input class="primary-button" type="submit" value="Soumettre">
                             </div>
                         </div>
                     </form>

@@ -6,9 +6,9 @@
 
     <div class="container text-center">
         <h1>RCL TV</h1>
-        <p class="tagline">Plus proche de la communauté 🎙️</p>
+        <p class="tagline mb-4">Plus proche de la communauté 🎙️</p>
 
-        <div class="micro-container">
+        <div class="micro-container mx-auto">
             <img src="https://cdn-icons-png.flaticon.com/512/2891/2891628.png" class="cap" alt="Casquette">
             <i class="fa-solid fa-microphone-lines micro mt-4" id="micro"></i>
 
